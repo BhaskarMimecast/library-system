@@ -1,14 +1,3 @@
-// import { Component } from '@angular/core';
-
-// @Component({
-//   selector: 'app-author',
-//   templateUrl: './author.component.html',
-//   styleUrls: ['./author.component.scss']
-// })
-// export class AuthorComponent {
-
-// }
-
 
 import { Component } from '@angular/core';
 import { AuthorService } from '../author.service';
@@ -46,18 +35,7 @@ export class AuthorComponent {
           this.errorMessage = 'Error creating author';
           console.error('Error creating author:', error);
         })
-      // this.authorService.createAuthor(authorData).subscribe(
-      //   (data) => {
-      //     this.successMessage = 'Author created successfully';
-      //     this.errorMessage = null;
-      //     this.authorName = ''; // Clear the input field
-      //   },
-      //   (error) => {
-      //     this.successMessage = null;
-      //     this.errorMessage = 'Error creating author';
-      //     console.error('Error creating author:', error);
-      //   }
-      // );
+     
     }
   }
 }
