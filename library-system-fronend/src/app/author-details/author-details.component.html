@@ -1,0 +1,47 @@
+<!-- <p>author-details works!</p>
+
+<div class="container">
+    <h2>Author Details</h2>
+    <div *ngIf="author">
+      <h3>{{ author.name }}</h3>
+      <div class="author-books">
+        <h4>Books by {{ author.name }}</h4>
+        <ul>
+          <li *ngFor="let book of author.books">
+            <div class="book">
+              <h5>{{ book.name }}</h5>
+              <p>{{ book.summary }}</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div *ngIf="!author">
+      <p>No author details available.</p>
+    </div>
+  </div> -->
+
+
+  <div class="container">
+    <div class="author-contianer">
+    <h2>Author Details</h2>
+    <label for="authorName">Author Name:</label>
+    <input type="text" id="authorName" [(ngModel)]="authorName" name="authorName">
+    <button class="blue-button" (click)="getAuthorDetails()">Details</button>
+    </div>
+  
+    <div *ngIf="author">
+      <h3>Author Name: {{ author.name }}</h3>
+      <div class="author-books">
+        <ul>
+          <li *ngFor="let book of author.books">
+            <div class="book">
+              <h5>BookName: {{ book.name }}</h5>
+              <p> Summary: {{ book.summary }}</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <p class="no-details" *ngIf="!author && showNoDetailsMessage">No author details available.</p>
+  </div>

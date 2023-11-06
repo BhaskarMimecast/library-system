@@ -1,0 +1,52 @@
+// .app-container {
+//     max-width: 1200px;
+//     margin: 0 auto;
+//     padding: 20px;
+//   }
+  
+//   header {
+//     background-color: #0088cc;
+//     color: #fff;
+//     padding: 10px 0;
+//     text-align: center;
+  
+//     a {
+//       color: #fff;
+//       text-decoration: none;
+//     }
+//   }
+
+.app-container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  header {
+    background-color: #0088cc;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    width: 100%;
+  }
+  
+  nav {
+    text-align: center;
+  }
+  
+  nav a {
+    text-decoration: none;
+    color: #fff;
+    margin: 0 20px;
+    font-weight: 600;
+    font-size: 18px;
+    transition: color 0.3s;
+  }
+  
+  nav a:hover {
+    color: #006699;
+  }
+  
+  router-outlet {
+    margin-top: 20px;
+  }

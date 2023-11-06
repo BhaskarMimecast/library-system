@@ -1,0 +1,38 @@
+/* You can add global styles to this file, and also import other style files */
+/* Import CSS frameworks or libraries */
+@import '~bootstrap/dist/css/bootstrap.min.css'; // Example: Import Bootstrap CSS
+
+/* Global styles for the entire application */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+}
+
+/* Add custom global styles here */
+/* For example, define a common button style for your application */
+.button {
+  padding: 10px 20px;
+  background-color: #0088cc;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #006699;
+  }
+}
+
+/* Define a common container style */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+/* Add other global styles as needed */
