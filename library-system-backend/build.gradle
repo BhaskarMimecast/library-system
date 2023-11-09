@@ -1,0 +1,63 @@
+plugins {
+	id 'org.springframework.boot' version '2.5.5'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id "org.jetbrains.kotlin.jvm" version "1.4.32"
+	id "org.jetbrains.kotlin.plugin.spring" version "1.4.32"
+	id "org.jetbrains.kotlin.kapt" version "1.4.32"
+}
+
+group = "com.mimecast"
+version = "0.0.1-SNAPSHOT"
+java.sourceCompatibility = JavaVersion.VERSION_11
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation "org.springframework.boot:spring-boot-starter-web:2.5.3"
+	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb:2.5.3'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test:2.5.3'
+	compileOnly 'org.projectlombok:lombok:1.18.28'
+	annotationProcessor 'org.projectlombok:lombok:1.18.28'
+	// Recommended to start mongo with docker
+	// If you are using mongo on docker, comment the following line and re run gradle sync
+	implementation 'de.flapdoodle.embed:de.flapdoodle.embed.mongo:3.0.0'
+	implementation 'com.fasterxml.jackson.core:jackson-databind'
+	implementation "com.fasterxml.jackson.module:jackson-module-kotlin"
+	implementation "io.micrometer:micrometer-registry-prometheus"
+	implementation "org.jetbrains.kotlin:kotlin-reflect"
+	implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+//compileTestKotlin {
+//	kotlinOptions {
+//		freeCompilerArgs = ["-Xjsr305=strict"]
+//		jvmTarget = "11"
+//	}
+//}
+//
+compileKotlin {
+	kotlinOptions {
+		freeCompilerArgs = ["-Xjsr305=strict"]
+		jvmTarget = "11"
+	}
+}
+
+compileTestKotlin {
+	kotlinOptions {
+		freeCompilerArgs = ["-Xjsr305=strict"]
+		jvmTarget = "11"
+	}
+}
+
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
+test {
+	useJUnitPlatform()
+}
+
