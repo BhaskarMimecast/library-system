@@ -16,15 +16,14 @@ class NYTimesBookProvider(private val restTemplate: RestTemplate) : BookProvider
     private val apiKey: String? = null
 
     @Throws(ServiceUnavailableException::class)
-    override fun getBooksByAuthor(authorName: String?): List<Book?>? {
+    override fun getBooksByAuthor(authorName: String): List<Book> {
         val url = "https://api.nytimes.com/svc/books/v3/reviews.json?author=$authorName&api-key=$apiKey"
-        val response: NYTimesResponse?
-        response = try {
+        val response: NYTimesResponse? = try {
             restTemplate.getForObject<NYTimesResponse>(url, NYTimesResponse::class.java)
         } catch (e: Exception) {
             throw ServiceUnavailable()
         }
-        val books: MutableList<Book?> = ArrayList<Book?>()
+        val books: MutableList<Book> = ArrayList<Book>()
         if (response != null && "OK" == response.status) {
             for (review in response.results!!) {
                 val book = Book()
