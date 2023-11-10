@@ -18,8 +18,8 @@ import javax.naming.ServiceUnavailableException
 @RequestMapping("/author")
 @RequiredArgsConstructor
 @CrossOrigin
-class AuthorController( private val bookProvider: BookProvider,private val authorRepository: AuthorRepository ) {
-//    private val bookProvider: BookProvider? = null
+class AuthorController(private val bookProvider: BookProvider, private val authorRepository: AuthorRepository) {
+    //    private val bookProvider: BookProvider? = null
 //    private val authorRepository: AuthorRepository? = null
     @PostMapping
     @Throws(ServiceUnavailableException::class)
@@ -27,11 +27,11 @@ class AuthorController( private val bookProvider: BookProvider,private val autho
         val responseData = ResponseData()
         val books: List<Book>
         books = this.bookProvider.getBooksByAuthor(name)
-        val author1: Optional<Author?>? = authorRepository.findByName(name)
+        val author1: Optional<Author> = authorRepository.findByName(name)
         val author: Author
-        if (author1 != null && author1.isEmpty) {
+        if (author1.isEmpty) {
             author = Author()
-            author.name  = name
+            author.name = name
         } else {
             author = author1!!.get()
         }
@@ -39,17 +39,15 @@ class AuthorController( private val bookProvider: BookProvider,private val autho
         authorRepository.save(author)
         val responseBody = "Author books created successfully."
         responseData.message = responseBody
-        val headers = HttpHeaders()
-        headers.add("Access-Control-Allow-Methods", "OPTIONS, POST")
         return ResponseEntity<ResponseData>(responseData, HttpStatus.CREATED)
     }
 
     @GetMapping
     fun getAuthorByName(@RequestParam name: String): ResponseEntity<Author> {
-        val author: Optional<Author?>? = authorRepository.findByName(name)
-        if (author?.isEmpty == true) {
+        val author: Optional<Author> = authorRepository.findByName(name)
+        if (author.isEmpty) {
             throw AuthorNotFoundException("Author with name $name not found")
         }
-        return ResponseEntity<Author>(author?.get(), HttpStatus.OK)
+        return ResponseEntity<Author>(author.get(), HttpStatus.OK)
     }
 }
