@@ -1,4 +1,4 @@
-package com.mimecast.books.service
+package com.mimecast.librarysystembackend.service
 
 import com.fasterxml.jackson.annotation.JsonProperty
 import lombok.Data

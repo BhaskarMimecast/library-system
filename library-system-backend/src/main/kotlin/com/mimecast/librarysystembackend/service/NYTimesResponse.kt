@@ -1,7 +1,7 @@
 package com.mimecast.librarysystembackend.service
 
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.mimecast.books.service.NYTimesBookReview
+import com.mimecast.librarysystembackend.service.NYTimesBookReview
 import lombok.Data
 
 @Data
