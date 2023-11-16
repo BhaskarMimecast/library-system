@@ -1,0 +1,16 @@
+jib {
+
+    allowInsecureRegistries = true
+
+    from {
+        image = "adoptopenjdk/openjdk11:alpine"
+    }
+    to {
+        image = "127.0.0.1:5000/library-system-backend:latest"
+    }
+    container {
+        ports = ["8020"]
+
+        creationTime = "USE_CURRENT_TIMESTAMP"
+    }
+}
