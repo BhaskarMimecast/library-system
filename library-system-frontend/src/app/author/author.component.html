@@ -1,24 +1,28 @@
-<!-- <p>author works!</p> -->
-
 <div class="container">
-    <h2>Create Author</h2>
-    <form (ngSubmit)="createAuthor()" #authorForm="ngForm">
-    <!-- <form (ngSubmit)="createAuthor()"> -->
-      <div class="form-group">
-        <label for="authorName">Author's Name:</label>
-        <input
-          type="text"
-          class="form-control"
-          id="authorName"
-          name="authorName"
-          [(ngModel)]="authorName"
-          required
-        />
-      </div>
-      <button type="submit" class="btn btn-primary">Create Author Book Details</button>
-      <div *ngIf="successMessage">
-        <h3>{{ successMessage }}</h3>
-     </div>
-     <p class="no-details" *ngIf="errorMessage">No author details available.</p>
-    </form>
-  </div>
+  <h2>Create Author</h2>
+  <!-- <form (ngSubmit)="createAuthor()" #authorForm="ngForm"> -->
+    <div >
+      <label for="authorName">Author's Name:</label>
+      <ng-select 
+
+        [items]="authors"
+        [virtualScroll]="true"
+        bindLabel="authorName"
+        bindValue="authorName"
+        (scrollToEnd)="onAuthorListScroll()"
+        placeholder="Sleect author"
+        [(ngModel)]="authorName"
+      >
+      </ng-select>
+      <!-- <select class="form-control" id="authorName" name="authorName" [(ngModel)]="authorName"
+        (scroll)="onAuthorListScroll($event)" required>
+        <option *ngFor="let author of authors" [value]="author">{{ author }}</option>
+      </select> -->
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="createAuthor()">Create Author Book Details</button>
+    <div *ngIf="successMessage">
+      <h3>{{ successMessage }}</h3>
+    </div>
+    <p class="no-details" *ngIf="errorMessage">No author details available.</p>
+  <!-- </form> -->
+</div>

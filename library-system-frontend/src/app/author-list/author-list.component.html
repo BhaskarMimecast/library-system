@@ -1,0 +1,6 @@
+<div *ngIf="authorList && authorList.length > 0">
+<div *ngFor="let author of authorList" class="author-box" (click)="navigateToDetails(author.name)">
+    <h3>{{ author.name }}</h3>
+    <p>Number of Books: {{ author.books.length }}</p>
+</div>
+</div>

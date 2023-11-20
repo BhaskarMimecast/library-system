@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 /* Import CSS frameworks or libraries */
 @import '~bootstrap/dist/css/bootstrap.min.css'; // Example: Import Bootstrap CSS
+@import "~@ng-select/ng-select/themes/default.theme.css";
 
 /* Global styles for the entire application */
 body {

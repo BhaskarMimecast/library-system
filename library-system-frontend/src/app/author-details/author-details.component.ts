@@ -1,18 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthorService } from '../author.service';
 import axios from 'axios';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-author-details',
   templateUrl: './author-details.component.html',
   styleUrls: ['./author-details.component.scss'],
 })
-export class AuthorDetailsComponent {
+export class AuthorDetailsComponent implements OnInit{
   authorName: string = '';
   author: any;
   showNoDetailsMessage: boolean = false;
 
-  constructor(private authorService: AuthorService) {}
+  constructor(private authorService: AuthorService, private route:ActivatedRoute) {}
+
+  ngOnInit(): void {
+    this.route.queryParams.subscribe((params) => {
+      console.log("params", params);
+      this.authorName = params['authorName'] || null;
+      this.getAuthorDetails();
+    });
+  }
 
   getAuthorDetails() {
     if (this.authorName) {  

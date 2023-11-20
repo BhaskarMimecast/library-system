@@ -1,12 +1,13 @@
-  <div class="container">
-    <div class="author-contianer">
+<div class="container">
+  <div class="author-contianer">
     <h2>Author Details</h2>
     <label for="authorName">Author Name:</label>
     <input type="text" id="authorName" [(ngModel)]="authorName" name="authorName">
     <button class="blue-button" (click)="getAuthorDetails()">Details</button>
-    </div>
-  
-    <div *ngIf="author">
+  </div>
+
+  <div class="author-book-container">
+    <div *ngIf="author" class="author-books">
       <h3>Author Name: {{ author.name }}</h3>
       <div class="author-books">
         <ul>
@@ -21,3 +22,4 @@
     </div>
     <p class="no-details" *ngIf="!author && showNoDetailsMessage">No author details available.</p>
   </div>
+</div>
