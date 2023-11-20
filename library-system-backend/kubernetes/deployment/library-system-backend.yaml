@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: library-system-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: library-system-backend
+  template:
+    metadata:
+      labels:
+        app: library-system-backend
+    spec:
+      containers:
+        - name: library-system-backend
+          image:  192.168.49.2:5000/library-system-backend:latest
+          ports:
+            - containerPort: 8080
+          imagePullPolicy: IfNotPresent
