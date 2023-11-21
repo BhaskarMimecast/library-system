@@ -45,7 +45,7 @@ class AuthorController(private val bookProvider: BookProvider, private val autho
     }
 
 
-    @GetMapping("/all")
+    @GetMapping("/all") //  fetching all authors from NYTimes
     @Throws(ServiceUnavailableException::class)
     fun getAuthors(@RequestParam page: String):  ResponseEntity<List<String>>{
         val author: List<String> = this.bookProvider.getAuthors(page.toInt());
@@ -55,7 +55,7 @@ class AuthorController(private val bookProvider: BookProvider, private val autho
         return ResponseEntity<List<String>>(author, HttpStatus.OK)
     }
 
-    @GetMapping("/list")
+    @GetMapping("/list") // fetching all exiting authors
     fun getAuthorList(@RequestParam page: String): ResponseEntity<Page<Author>> {
         val pageable: PageRequest = PageRequest.of(page.toInt(), 20)
         println("inside author list ${page}")

@@ -14,7 +14,7 @@ export class AuthorComponent implements OnInit {
   page: number = 0;
   selectedAuthor: string | null = null;
 
-  constructor(private authorService: AuthorService) {}
+  constructor(private authorService: AuthorService) { }
 
   ngOnInit() {
     this.getAuthors(this.page);
@@ -58,7 +58,7 @@ export class AuthorComponent implements OnInit {
 
     // // Load more authors when the user is near the bottom
     // if (scrollPosition >= pageHeight - 200) {
-      this.getAuthors(++this.page);
+    this.getAuthors(++this.page);
     // }
   }
 
@@ -71,9 +71,11 @@ export class AuthorComponent implements OnInit {
     this.authorService.getAllAuthors(page).then(
       (authors: string[]) => {
 
-        this.authors = [...this.authors, ...authors]
-        this.authors = new Set(this.authors);
-        this.authors = Array.from(this.authors);
+        if (authors && authors.length > 0) {
+          this.authors = [...this.authors, ...authors]
+          this.authors = new Set(this.authors);
+          this.authors = Array.from(this.authors);
+        }
         console.log("auhtor all", this.authors);
       }
     ).catch((error: any) => {
