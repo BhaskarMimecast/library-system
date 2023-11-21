@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: library-system-frontend-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: library-system-frontend
+  template:
+    metadata:
+      labels:
+        app: library-system-frontend
+    spec:
+      containers:
+        - name: library-system-frontend
+          image: 192.168.67.2:5000/library-system-frontend
+          ports:
+            - containerPort: 80
+          imagePullPolicy: IfNotPresent

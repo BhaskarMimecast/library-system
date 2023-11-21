@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: library-system-backend
-          image:  192.168.49.2:5000/library-system-backend:latest
+          image:  192.168.67.2:5000/library-system-backend:latest
           ports:
             - containerPort: 8080
           imagePullPolicy: IfNotPresent
